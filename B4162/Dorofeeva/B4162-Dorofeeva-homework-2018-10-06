@@ -1,0 +1,98 @@
+class Music():
+#Класс "Музыка" делится на классы, соответствующие различным жанрам музыки 
+ genre = "Music has plenty of genres!"
+ def get_genre(self):
+  return self.genre
+
+class Rock(Music):
+#Для класса "Рок" родительским классом является класс "Музыка"
+  genre = "Rock"
+
+obj = Music()
+obj2 = Rock()
+
+print(obj.get_genre())
+print(obj2.get_genre())
+
+class Gothic(Music) :
+#Для класса "Готик" родительским классом является класс "Музыка"
+    genre = "Gothic"
+
+obj = Music()
+obj3 = Gothic()
+
+print(obj.get_genre())
+print(obj3.get_genre())
+
+class Metal(Rock) :
+#Для класса "Метал" родительским классом является класс "Рок"
+    genre = "Metal"
+
+obj2 = Rock()
+obj4 = Metal()
+
+print(obj.get_genre(), obj2.get_genre())
+print(obj4.get_genre())
+
+class Hard(Rock) :
+#Для класса "Хард" родительским классов является класс "Рок"
+    genre = "Hard"
+
+obj2 = Rock()
+obj5 = Hard()
+
+print(obj.get_genre(), obj5.get_genre(), obj2.get_genre())
+print(obj5.get_genre())
+
+class Alternative(Metal) :
+    #Для класса "Альтернатив" родительским классом является класс "Метал"
+    genre = "Alternative"
+
+obj4 = Metal()
+obj6 = Alternative()
+
+print(obj.get_genre(), obj4.get_genre())
+print(obj6.get_genre())
+
+class AlternativeMetal(Alternative, Metal) :
+#Для класса "Альтернативный метал" родительскими классами являются классы "Альтернатив" и "Метал"
+    genre = "AlternativeMetal"
+
+obj = Music()
+obj4 = Metal()
+obj6 = Alternative()
+
+print(obj.get_genre(), obj6.get_genre(), obj4.get_genre())
+
+class GothicMetal(Gothic, Metal) :
+#Для класса "Готик метал" родительскими классами являются классы "Готик" и "Метал"
+    genre = "GothicMetal"
+
+obj = Music()
+obj3 = Gothic()
+obj4 = Metal()
+
+print(obj.get_genre(), obj3.get_genre(), obj4.get_genre())
+
+class HardRock(Hard, Rock) :
+    #Для класса "Хард рок" родительскими классами являются классы "Хард" и "Рок"
+    genre = "HardRock"
+
+obj = Music()
+obj2 = Rock()
+obj5 = Hard()
+
+print(obj.get_genre(), obj5.get_genre(), obj2.get_genre())
+
+
+class Rammstein(AlternativeMetal, GothicMetal, HardRock) :
+    #Для класса "Раммштайн" родительскими классами являются классы "Альтернативный метал", "Готик метал" и "Хард рок"
+    obj = Music()
+obj2 = Rock()
+obj3 = Gothic()
+obj4 = Metal()
+obj5 = Hard()
+obj6 = Alternative()
+
+print(obj.get_genre(), obj6.get_genre(), obj4.get_genre(), obj3.get_genre(), obj4.get_genre(), obj5.get_genre(), obj2.get_genre())
+print("Rammstein is alternative metal, gothic metal and hard rock music band")   
