@@ -1,5 +1,6 @@
+class NumPy:
 # Сумма двух матриц
-print("1) Сложение матриц:")
+ print("1) Сложение матриц:")
 X = [[12, 7, 3],
      [4, 5, 6],
      [7, 8, 9]]
@@ -14,10 +15,14 @@ for i in range(len(X)):
     for j in range(len(X[0])):
         #Вычисление суммы матриц X и Y
         result[i][j] = X[i][j] + Y[i][j]
+        #Метод суммирования матриц
+        def addition(self):
+            return self.result[i][j]
 for r in result:
 # Вывод на экран суммы двух матриц    
     print(r)
 print("\n")
+
 # Разность двух матриц
 print("2) Вычитание матриц:")
 X = [[12, 7, 3],
@@ -34,10 +39,14 @@ for i in range(len(X)):
     for j in range(len(X[0])):
         # Вычисление разности матриц X и Y
         result[i][j] = X[i][j] - Y[i][j]
+        #Метод вычитания матриц
+        def subtraction(self) :
+            return self.result_substraction[i][j]
 for r in result:
 # Вывод на экран разности двух матриц    
     print(r)
 print("\n")
+
 # Произведение двух матриц
 print("3) Умножение матриц:")
 X = [[12, 7, 3],
@@ -56,10 +65,14 @@ for i in range(len(X)):
         for k in range(len(Y)):
             # Вычисление произведения матриц X и Y
              result[i][j] += X[i][k]*Y[k][j]
+             #Метод произведения матриц
+             def multiplication(self) :
+                 return self.result[i][j]
 for r in result:
 # Вывод на экран произведения двух матриц 
     print(r)
 print("\n")
+
 # Транспонирование матрицы
 print("4) Транспонирование матрицы:")
 from pprint import pprint
@@ -68,33 +81,39 @@ X = [[0.5, 0, 0, 0, 0],
     [1, 1, 0.5, 0, 0],
     [1, 1, 1, 0.5, 0],
     [1, 1, 1, 1, 0.5]]
-# Операция транспонирования матрицы
+# Операция транспонирования матрицы    
 X_t = list(zip(*X))
-# Вывод на экран исходной матрицы
+# Вывод на экран транспонированной матрицы
 print("Исходная матрица:")
 pprint(X)
-# Вывод на экран транспонированной матрицы
 print("\n")
 print("Транспонированная матрица:")
+# Метод транспонирования    
+def transpon(self) :
+    return self.X_t
 pprint(X_t)
-print("\n")
+
 
 # Вычисление определителя матрицы
+print("\n")
 print("5) Определитель матрицы:")
 print("Исходная матрица:")
 import copy
 
+# Вывод матрицы
 def print_matrix(X):
     for strX in X:
         print(strX)
-        
+
+# Копирование        
 def minor(X, i, j):
-    M = copy.deepcopy(X)  # Копирование
+    M = copy.deepcopy(X)  
     del M[ i ]
     for i in range(len(X[0])-1):
         del M[i][j]
     return M
 
+# Метод вычисления определителся
 def det(X):
     m = len(X)
     n = len(X[0])
@@ -121,6 +140,7 @@ print("Определитель матрицы:")
 print(det(X))
 print("\n")
 
+
 # Генерация массива случайных чисел
 print("6) Генерация массива из 6 случайных чисел по убыванию:")
 import random
@@ -134,25 +154,37 @@ for i in range(6):
         x.append(x1)
         tmp = x1
     else: break
+    # Метод генерации массива случайных чисел
+    def generation(self) :
+        return self.x
 # Вывод на экран массива  
 print(x)
 print("\n")
 
+
 # Генерация случайного числа в диапазоне от 5 до 10
 import random
 x = random.randint(5, 10)
+# Метод генерации случайного числа в диапазоне от 5 до 10
+def generationrandom(self):
+    return self.x
 # Вывод на экран случайно сгенерированное число
 print("7) Случайное число в диапазоне от 5 до 10:")
 print(x)
 print("\n")
 
+
 # Генерация единичного случайного числа с плавающей точкой в диапазоне от 3 до 10
 import random
 x = random.triangular(3, 10)
+# Метод генерации единичного случайного числа
+def generationsingle(self):
+    return self.x
 print("8) Случайное число в диапазоне от 3 до 10:")
 # Вывод на экран случайно сгенерированное число с плавающей точкой
 print(x)
 print("\n")
+
 
 # Скалярное произведение двух векторов
 print("9) Скалярное произведение:")
@@ -163,12 +195,14 @@ print("\n")
 print("Второй вектор:")
 v = [0.2, -5.2, 1.3]
 print(v)
+# Метод скалярного произведения двух векторов
 def dot(x,y):
      return sum(i[0]*i[1] for i in zip(u,v))
 print("\n")
 print("Скалярное произведение двух векторов:")
 print(dot(u,v))
 print("\n")
+
 
 # Фильтрация массива
 print("10) Выбор элементов массива:")
@@ -178,5 +212,8 @@ print(X)
 print("\n")
 subset_of_X = set([6, 9, 12])
 Y = [i for i in X if i not in subset_of_X]
+# Метод фильтрации массива
+def filtr(self) :
+    return self.Y
 print("Массив без элементов 6, 9, 12:")
 print(Y)
