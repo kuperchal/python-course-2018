@@ -4,31 +4,32 @@ class Kokoc:
         self.column=len(array[0])
         self.ros=len(array)
 
-    def concatenate(a1,a2,k):
-        if k==0:
-            if len(a1.array[0])==len(a2.array[0]):
-                b=[]
-                for i in range (len(a1.array)):
-                    b.append(a1.array[i])
-                for i in range (len(a2.array)):
-                    b.append(a2.array[i])
+    def concatenate(a1,a2,k):                            #Метод конкатинейт. Присоединение массивов по какой-либо существующей оси.
+        if k==0:                                         #Проверяем значение оси. Соединяем массивы в столбик при k=0.
+            if len(a1.array[0])==len(a2.array[0]):       #Сверяем длину 0ых элементов в массивах.
+                b=[]                                     #Создаем пустой список.
+                for i in range (len(a1.array)):          #Проходимся по каждому элементу(подмассиву) в массиве а1
+                    b.append(a1.array[i])                #Добавляем этот элемент в список b.
+                for i in range (len(a2.array)):          #Проходимся по каждому элементу(подмассиву) в массиве а2
+                    b.append(a2.array[i])                #Добавляем этот элемент в список b.
 
                 return b
-        if k==1:
-            if len(a1.array)==len(a2.array[0]):
-                b=[]
-                for i in range (len(a1.array)):
-                    c=[]
-                    for t in range (len(a1.array[i])):
-                        c.append(a1.array[i][t])
-                    for j in range (len(a2.array)):
-                        c.append(a2.array[j][i])
-                    b.append(c)
+        if k==1:                                         #Проверяем значение оси. Присоединяем к массиву а1 транспонированный
+                                                         #массив а2 при k=1.
+            if len(a1.array)==len(a2.array[0]):          #Сверяем длинну массива а1 и длинну 0ого элемента массива а2.
+                b=[]                                     #Создаем пустой список.
+                for i in range (len(a1.array)):          #Проходимся по каждому элементу(подмассиву) в массиве а1.
+                    c=[]                                 #Создаем пустой список.
+                    for t in range (len(a1.array[i])):   #Проходимся по каждому элементу в подмассиве а1.
+                        c.append(a1.array[i][t])         #Добавляем этот элемент в список с.
+                    for j in range (len(a2.array)):      #Проходимся по каждому элементу(подмассиву) в массиве а2.
+                        c.append(a2.array[j][i])         #Добавляем этот элемент в список с.
+                    b.append(c)                          #Добавляем в список b список с.
 
                 return b
 
-        if k==2:
-            if len(a1.array)==len(a2.array[0]):
+        if k==2:                                         #Проверяем значение оси. Соединяем массивы в строку при k=2.
+            if len(a1.array)==len(a2.array[0]):          #Действия аналогичны предыдущему пункту, только по элементам подмассивов.
                 b=[]
                 for i in range (len(a1.array)):
                     for t in range (len(a1.array[i])):
@@ -39,29 +40,30 @@ class Kokoc:
 
                 return b
 
-    def mm(a,word):
-        if word=='min':
-            m=a.array[0][0]
-            for i in range (len(a.array)):
-                for j in range (len(a.array[0])):
-                    if a.array[i][j]<=m:
-                        m=a.array[i][j]
+    def mm(a,word):                                      #Объединеный метод максимума и минимума. Нахождение
+                                                         #максимума или минимума в массиве
+        if word=='min':                                  #Смотрим, что нужно найти максимум или минимум. В данном случае минимум.
+            m=a.array[0][0]                              #Принимамем за минимум 0ой элемент в 0ом подмассиве.
+            for i in range (len(a.array)):               #Проходим по элементам массива.
+                for j in range (len(a.array[0])):        #Проходим по элементам подмассива.
+                    if a.array[i][j]<=m:                 #Сравниваем минимум с этим текущим элементом, если оно меньше,
+                        m=a.array[i][j]                  #то присваиваем минимум новое значение.
             print('\n')
             return m
-        if word=='max':
-            m=a.array[0][0]
-            for i in range (len(a.array)):
-                for j in range (len(a.array[0])):
-                    if a.array[i][j]>=m:
-                        m=a.array[i][j]
+        if word=='max':                                  #Смотрим, что нужно найти максимум или минимум. В данном случае максимум.
+            m=a.array[0][0]                              #Принимамем за максимум 0ой элемент в 0ом подмассиве.
+            for i in range (len(a.array)):               #Проходим по элементам массива.
+                for j in range (len(a.array[0])):        #Проходим по элементам подмассива.
+                    if a.array[i][j]>=m:                 #Сравниваем максимум с этим текущим элементом, если оно больше,
+                        m=a.array[i][j]                  #то присваиваем минимум новое значение.
             print('\n')
             return m
 
-    def repeat(a,x):
-        b=[]
-        for i in range (len(a.array)):
-            for j in range (len(a.array[0])):
-                for t in range (x):
+    def repeat(a,x):                                     #Метод повтора.
+        b=[]                                             #Создаем пустой список.
+        for i in range (len(a.array)):                   #Проходим по элементам массива.
+            for j in range (len(a.array[0])):            #Проходим по элементам j-ого подмассива.
+                for t in range (x):                      #Добавляем этот элемент х раз.
                     b.append(a.array[i][j])
         print('\n')
         return b
