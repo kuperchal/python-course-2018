@@ -1,0 +1,126 @@
+import math
+
+from math import sin, cos
+
+#Метод левых прямоугольников
+
+def integral(f, a, b, n):
+
+    print("\nТекущее число разбиений: ", n)
+
+#Вычисляем шаг
+
+    h = (b-a)/float(n)
+
+    print("Текущий шаг:", h)
+
+#Вносим точки для разбиения
+
+    total = sum([f((a + (k*h))) for k in range(0, n)])
+
+#Вычисление по формуле левых прямоугольников
+
+    result = h * total
+
+    print("Текущий результат: ", result)
+
+    return result
+
+def f(x):
+
+    return sin(x) + cos(x)
+
+print("Используем формулу левых прямоугольников")
+
+print("Интегрируемая функция: f(x) = sin(x) + cos(x)")
+
+print("Точность: 0.01")
+
+#Начальное число разбиений отрезка равно 2
+
+n = 2
+
+# Вычисление интеграла а1 на отрезке интегрирования [0;10] с числом разбиения n = 2
+
+a1 = integral (f, 0, 10, n)
+
+# Вычисление интеграла а2 на отрезке интегрирования [0;10] с числом разбиения = n * 2
+
+n *= 2
+
+a2 = integral (f, 0, 10, n)
+
+#Проверка условия |а1 - а2|< 0.01. Если условие выполняется, то заданная точность достигнута и значение интеграла принимается равным а2
+
+#Если условие не выполняется, то число разбиений отрезка n удваивают до тех пор, пока условие не будет выполнено.
+
+while abs(a1 - a2) > 0.01:
+
+    n *= 2
+
+    a1 = integral (f, 0, 10, n)
+
+    n *= 2
+
+    a2 = integral (f, 0, 10, n)
+print("\n")    
+print("Результаты интегрирования:")    
+print("\nleft_rectangle_integral:", a2, "\nКоличество разбиений:", n)
+
+
+
+#Метод средних прямоугольников 
+def fn(x):
+
+    return math.sin(x) + math.cos(x)
+
+def rectangle_integral(f,xmin,xmax,n):
+
+#Шаг разбиения отрезка
+
+    dx=(xmax-xmin)/n
+
+    area=0
+
+    x=xmin
+
+    for i in range(n):
+
+        area+=dx*f(x)
+
+        x+=dx
+
+    return area
+
+ 
+
+#Метод трапеций
+
+def trapezium_integral(f,xmin,xmax,n):
+
+#Шаг разбиения отрезка
+
+    dx=(xmax-xmin)/n
+
+    area=0
+
+    x=xmin
+
+#Вычисление определенного интеграла методом трапеций
+
+    for i in range(n):
+
+#Определенный интеграл представляется в виде суммы интегралов на каждом отрезке
+
+        area+=dx*(f(x)+f(x+dx))/2
+
+        x+=dx
+
+    return area
+
+print("\n")
+print("rectangle_integral = {}".format(rectangle_integral(fn,0,10,5000)))
+print("Количество разбиений: 5000")
+print("\n")
+print("trapezium_integral = {}".format(trapezium_integral(fn,0,10,5000)))
+print("Количество разбиений: 5000")
