@@ -1,0 +1,19 @@
+   
+a = float(input("Введите первый коэффициент:  ")) 
+b = float(input("Введите второй коэффициент:  ")) 
+c = float(input("Введите третий коэффициент:  "))
+D = ((b**2) - (4 * a * c))
+    
+if D == 0:
+       first_root = -b/2*a  
+       print(first_root) 
+elif D < 0:
+  print ("Корней нет")
+else: 
+  D1 = D
+  first_root = -b + D1 / 2*a 
+  second_root = -b - D1 / 2*a
+  print("Дискриминант =", D1) 
+  print("Первый корень:", first_root, "Второй корень:", second_root)
+
+
