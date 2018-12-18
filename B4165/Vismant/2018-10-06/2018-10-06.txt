@@ -43,8 +43,7 @@ class Cell:
 
 class Figure(Cell):
     def __str__(self):
-        return '%s on a %s : %s (%s cell)' % (
-            self.__class__.__name__, self.column, self.line, self.colour)
+        return '%s on a %s : %s (%s cell)' % (self.__class__.__name__, self.column, self.line, self.colour)
 
     def can_move_horizontal(self, cell):
         if self.line == cell.line:
@@ -71,8 +70,7 @@ class Rook(Figure):
 
 
 if __name__ == "__main__":
-    menu_choose = int(
-        input("Press 1 to test cell colour checker. And press 2 to test figure movement to cell possibility checker: "))
+    menu_choose = int(input("Press 1 to test cell colour checker. And press 2 to test figure movement to cell possibility checker: "))
     if menu_choose == 1:
         column1 = int(input("First cell column: "))
         line1 = int(input("First cell line: "))
