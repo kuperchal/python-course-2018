@@ -1,3 +1,6 @@
+#Построение графика с диаграммами зависимости предела прочности плёнок от их сырья и концентрации. 
+#Это относится к теме моей дипломной работы.
+
 import pandas as pd 
 import matplotlib as mpl 
 import matplotlib.pyplot as plt 
