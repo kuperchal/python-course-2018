@@ -1,0 +1,83 @@
+def heap_sort(array:list,sort_order='increase'):
+#Строим структуру данных HEAP, в зависимости от переданного sort_order на вершину дерева попадет либо самое большое (descrease), либо самое маленькое (increase)значение. Для сортировнки в цикле берем верхнее значение и добавляем в список, а остальные сдвигаем. Алфавитный порядок букв - флаг "increase"
+  assert sort_order=='increase' or sort_order=='decrease'
+  
+  class Binary_Tree:
+    def __init__(self, sort_order):
+      self.values=[]
+      self.size=0
+      self.flag=sort_order
+
+    def insert(self, val, flag):  
+      self.values.append(val)
+      self.size+=1
+      self.balance(self.size -1, flag)
+    
+    def balance(self,i,flag):
+      if flag=='increase':
+        while(i!=0) and (self.values[(i-1)//2]> self.values[i]):
+          self.values[i], self.values[(i-1)//2]=(self.values[(i-1)//2], self.values[i])
+          i=(i-1)//2
+      if flag=='decrease':
+        while(i!=0) and (self.values[(i-1)//2]<self.values[i]):
+          self.values[i], self.values[(i-1)//2]=(self.values[(i-1)//2], self.values[i])
+          i=(i-1)//2
+
+    def extract_top(self, flag):
+      if not self.size:
+        return None
+      tmp=self.values[0]
+      self.values[0]=self.values[-1]
+      self.values.pop()
+      self.size-=1
+      self.take_down(0,flag)
+      return tmp
+
+    def take_down(self,i,flag):
+      if flag=='increase':
+        while(i*2+1)<self.size:
+          j=i
+          if self.values[i*2+1]<self.values[i]:
+            j=i*2+1
+          if ((i*2+2)<self.size) and (self.values[j]>self.values[i*2+2]):
+            j=i*2+2
+          if j==i:
+            break
+          self.values[i], self.values[j]=(self.values[j], self.values[i])
+          i=j
+      
+      if flag=='decrease':
+        while(i*2+1)<self.size:
+          j=i
+          if self.values[i*2+1]>self.values[i]:
+            j=i*2+1
+          if ((i*2+2)<self.size) and(self.values[j]<self.values[i*2+2]):
+            j=i*2+2
+          if j==i:
+            break
+          self.values[i], self.values[j]=(self.values[j], self.values[i])
+          i=j
+
+  def create_tree(array,sort_order):
+    tree = Binary_Tree(sort_order)
+    for elem in array:
+      tree.insert(elem,sort_order)
+    return tree
+  
+  def get_sorted_arr(tree:Binary_Tree):
+    arr=[]
+    while tree.size: 
+      arr.append(tree.extract_top(sort_order))
+    return arr
+  
+  return get_sorted_arr(create_tree(array,sort_order))
+
+a=[6,6,7,-777,89,12,32,4,5,-22,0,21,213,2,23,2,2,3,4,5,6,124,6886,0,0,9,-17,3423,2321,10203,888,888,11,244,67272,-11,-1224,142,144]
+#a=['e','f','v','d','z','b','w','c','a','g']
+
+print(heap_sort(a, sort_order='increase'))
+       
+
+
+
+
