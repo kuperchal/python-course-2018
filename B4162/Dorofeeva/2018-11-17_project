@@ -1,0 +1,60 @@
+
+import random
+infile = open('test1.txt', 'r')
+line = infile.read()
+words = line.split()
+import random as random_number
+random_number.choice(words)
+   
+#Случайный выбор слова для загадывания
+word=random_number.choice(words)
+len_word=len(word)
+#Количество попыток
+attempts = 10
+test=False
+#Отгаданные буквы
+guessed_letters=""
+#Отгаданное слово
+guessed_word=[]
+#Заполнение массива для загаданного слова 
+for i in range(len(word)):
+    guessed_word+="_"
+
+while len_word != 0 and attempts != 0:
+    test = False
+    #Ввод буквы и проверка на повтор
+    while True:
+        letter = input("\nВведите букву ")
+        #Условие для проверки была ли буква ранее введена игроком
+        if letter in guessed_letters or len(letter)>1:
+            print("\nЭту букву Вы уже вводили, попробуйте другую!")
+        else:
+            #Буква, введенная игроком, есть в загаданном слове и не была введена ранее
+            guessed_letters+=letter
+            break
+#Если буква, введенная игроком, есть в загаданном слове   
+    count=0
+    for i in word:
+        if letter in i:
+            len_word -= 1
+            test=True
+            guessed_word[count]=letter
+        count+=1
+ 
+ 
+ #Если буквы, введенной игроком, в загаданном слове нет, то на одну попытку становится меньше
+    if not test:
+        attempts -= 1
+        print("В загаданном слове такой буквы нет")
+#Если буква, введенная игроком, есть в загаданном слове        
+    else:
+        print("Правильно!")
+        print(guessed_word)
+ 
+    print("Осталось попыток ", attempts)
+#Слово полностью отгадано игроком 
+if(len_word == 0):
+    print("\nВы выиграли! Загаданное слово - ", word.upper())
+#Слово не отгадано или отгадано частично, но все попытки ввода использованы игроком    
+else:
+    print("\nК сожалению Вы проиграли... Загаданное слово - ", word.upper())
