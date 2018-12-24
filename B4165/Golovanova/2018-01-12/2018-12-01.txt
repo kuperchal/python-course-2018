@@ -1,0 +1,32 @@
+import numpy as np 
+import matplotlib.pyplot as plt 
+x=np.arange(-1*np.pi,1*np.pi,0.1) 
+y=np.arange(-5, 5) 
+
+#subplot 1 
+plt.subplot(321) 
+plt.plot(x,np.sin(x)) 
+plt.text(1.6, 0.8, 'Максимум ', color='k') 
+plt.text(-1.6, -1, 'Минимум ', color='k') 
+plt.title(r'$sin(x)$') 
+
+#subplot 2 
+plt.subplot(322) 
+plt.plot(x,np.cos(x),'goldenrod') 
+plt.text(0, 1, 'Максимум ', color='k') 
+plt.text(-2.5, -1, 'Минимум ', color='k') 
+plt.axis('equal') 
+plt.grid(True) 
+plt.title(r'$cos(x)$') 
+
+#subplot 3 
+plt.subplot(325) 
+plt.plot(x,np.tan(x),'r') 
+plt.axis([-0.45*np.pi, 0.45*np.pi, -5, 5]) 
+plt.title(r'$tan(x)$') 
+
+#subplot 4 
+plt.subplot(326) 
+plt.plot(x,(1/(np.tan(x))),'g') 
+plt.axis([0, 1*np.pi, -5, 5]) 
+plt.title(r'$ctg(x)$')
