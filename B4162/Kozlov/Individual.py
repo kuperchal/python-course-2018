@@ -21,7 +21,7 @@ def writing(file):
             table.cell(row=i,column=3).value = data[2]
             break
         i += 1
-    file.save('Dannye.xlsx')
+    file.save('Данные.xlsx')
 
 table = pd.read_excel('Данные.xlsx') 
 data_names = table.T._info_axis.values[:]
