@@ -4,6 +4,24 @@
 import pandas as pd 
 import matplotlib as mpl 
 import matplotlib.pyplot as plt 
+import openpyxl as xl
+
+file = xl.load_workbook('Данные.xlsx')
+def writing(file):
+    table = file['Лист1']
+    string = input ('Введите новый материал: ')
+    data = string.split(' ')
+    data[1] = float(data[1])
+    data[2] = float(data[2])
+    i = 1
+    while True:
+        if not table.cell(row=i,column=2).value:
+            table.cell(row=i,column=1).value = data[0]
+            table.cell(row=i,column=2).value = data[1]
+            table.cell(row=i,column=3).value = data[2]
+            break
+        i += 1
+    file.save('Dannye.xlsx')
 
 table = pd.read_excel('Данные.xlsx') 
 data_names = table.T._info_axis.values[:]
