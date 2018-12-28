@@ -1,0 +1,47 @@
+class np:
+    def __init__(self, arr):
+        self.arr = arr
+
+    def display(self):
+        for i in range(len(self.arr)):
+            print("[", end='')
+            for j in range(len(self.arr[0])):
+                print(self.arr[i][j], end=" ")
+            print("]")
+
+    def size(self):     
+        return len(self.arr[0])*len(self.arr)
+
+    def reshape(self, a, b):        
+        if (a * b == len(self.arr)):        
+            res = []
+            for i in range(a):
+                res1 = []       
+                for j in range(b):
+                    res1.append(self.arr[(i*b + j)])    
+                res.append(res1)    
+            self.arr = res
+        else:
+            print('Такое разбиение невозможно')
+
+    def resize(self, a, b):     #Реализация метода numpy.resize (Переопределение размерности матрицы)
+        if (a * b == len(self.arr)*len(self.arr[0])):    
+            res = []
+            for i in range(len(self.arr)):
+                for j in range(len(self.arr[0])):
+                    res.append(self.arr[i][j])      
+            self.arr = res
+            self.reshape(a, b)
+        else:
+            print('Такое разбиение невозможно')
+
+
+numpy = np([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+numpy.reshape(4, 3)
+numpy1 = np([[1, 7, 3],
+             [4, 5, 6],
+             [7, 8, 9],
+             [10, 11, 12]])
+numpy1.resize(6, 2)
+numpy.display()
+numpy1.display()
