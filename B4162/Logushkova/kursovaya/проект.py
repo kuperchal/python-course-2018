@@ -5,45 +5,35 @@ x = table.values[:, 0][::3]                     #определение стол
 y = table.values[:, 1][::3]
 y1 = table.values[:, 2][::3]
 plt.figure(figsize=(10, 6))
+
 #поиск максимума
-maxGR = max(y)                      #максимальное значение по игрик
-for i in range(len(y)):             #находим номер ячейки с этим значением
-    if y[i]== maxGR:
+def maxx(gr):
+ maxGR = max(gr)                      #максимальное значение по игрик
+ for i in range(len(gr)):             #находим номер ячейки с этим значением
+    if gr[i]== maxGR:
         numbmaxGR=i        
-xGR=x[numbmaxGR]                    #находим значение по иксу в ячейке с тем же номером
+        xGR=x[numbmaxGR]                #находим значение по иксу в ячейке с тем же номером
+        plt.annotate('local max', xy=(xGR, maxGR), xytext=(2700, 0.14),      
+            arrowprops=dict(facecolor='#ffb20a', shrink=5.01))
+                            
 #поиск минимума
-minGR = min(y)                      
-for i in range(len(y)):
-    if y[i]== minGR:
+def minn(gr):
+ minGR = min(gr)                      
+ for i in range(len(gr)):
+    if gr[i]== minGR:
         numbminGR=i       
-x1GR=x[numbminGR]
-#поиск максимума
-maxGRST = max(y1) 
-for i in range(len(y1)):
-    if y1[i]== maxGRST:
-         numbmaxGRST=i       
-xGRST=x[numbmaxGRST]
-#поиск минимума
-minGRST = min(y1) 
-for i in range(len(y1)):
-    if y1[i]== minGRST:
-        numbminGRST=i      
-x1GRST=x[numbminGRST]
-#постороение спектров
-plt.plot(x, y, 'r', x, y1, 'b')
-plt.annotate('local max', xy=(xGR, maxGR), xytext=(2700, 0.14),      #локальный максимум
+        x1GR=x[numbminGR]
+        plt.annotate('local min', xy=(x1GR, minGR), xytext=(1000, 0.025),      
             arrowprops=dict(facecolor='#ffb20a', shrink=5.01)) 
 
+#постороение спектров
 plt.plot(x, y, 'r', x, y1, 'b')
-plt.annotate('local min', xy=(x1GR, minGR), xytext=(1000, 0.025),      #локальный минимум
-            arrowprops=dict(facecolor='#ffb20a', shrink=5.01)) 
-plt.plot(x, y, 'r', x, y1, 'b')                           
-plt.annotate('local max', xy=(xGRST, maxGRST), xytext=(1000, 0.177),      #локальный максимум
-            arrowprops=dict(facecolor='#ffb20a', shrink=5.01))     
-                            
-plt.plot(x, y, 'r', x, y1, 'b')
-plt.annotate('local min', xy=(x1GRST, minGRST), xytext=(3500, 0.025),      #локальный минимум
-            arrowprops=dict(facecolor='#ffb20a', shrink=5.01))
+maxx(y)
+minn(y) 
+maxx(y1)
+minn(y1)
+
+
 
 plt.title("полный спектр")
 plt.xlabel("частота")
@@ -59,9 +49,9 @@ b = table.values[:, 3][::3]
 b1 = table.values[:, 4][::3]
 plt.figure(figsize=(10, 6))
                     
+                        
 plt.plot(a, b, 'r', a, b1, 'b')
-plt.annotate('local min', xy=(x1GR, minGR), xytext=(1600, 0.02),      #локальный минимум
-            arrowprops=dict(facecolor='#ffb20a', shrink=5.01)) 
+minn(y)                                         #локальный минимум
 
 plt.title("частичный спектр")
 plt.xlabel("частота")
