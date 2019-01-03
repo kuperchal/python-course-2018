@@ -5,10 +5,10 @@ class Person:
         self.age = age
         self.gender = gender
 
-    def walk(self):    #Метод демонстрирует принцип наследования
+    def walk(self):    #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї РЅР°СЃР»РµРґРѕРІР°РЅРёСЏ
         print(self.name, " walking...")
 
-    def __relax(self):   #Метод демонстрирует принцип инкапсуляции
+    def __relax(self):   #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї РёРЅРєР°РїСЃСѓР»СЏС†РёРё
         print(self.name, "relaxing...")
 
     def display(self):
@@ -19,21 +19,21 @@ class Person:
 
 
 class Employee(Person):
-    def __init__(self, name, age, gender, salary, money):   #Метод демонстрирует принцип частичного переопределения
+    def __init__(self, name, age, gender, salary, money):   #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().__init__(name, age, gender)
         self.salary = salary
         self.money = money
 
-    def get_salary(self):   #Метод демонстрирует принцип полного переопределения
+    def get_salary(self):   #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї РїРѕР»РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         self.money += self.salary
 
-    def display(self):  #Метод демонстрирует принцип частичного переопределения
+    def display(self):  #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().display()
         print(' Salary:', self.salary, '\n', 'Money', self.money)
 
 
 class Athlete(Person):
-    def __init__(self, name, age, gender, type):        #Метод демонстрирует принцип частичного переопределения
+    def __init__(self, name, age, gender, type):        #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().__init__(name, age, gender)
         self.type = type
 
@@ -41,26 +41,26 @@ class Athlete(Person):
         r = random.randint(1, 8)
         print(self.name, 'took', r, 'place!')
 
-    def display(self):      #Метод демонстрирует принцип частичного переопределения
+    def display(self):      #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().display()
         print('Type', self.type)
 
 
 class Writer(Person):
-    def __init__(self, name, age, gender, works):       #Метод демонстрирует принцип частичного переопределения
+    def __init__(self, name, age, gender, works):       #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().__init__(name, age, gender)
         self.works = works
 
-    def display(self):      #Метод демонстрирует принцип частичного переопределения
+    def display(self):      #РњРµС‚РѕРґ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРёРЅС†РёРї С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ
         super().display()
         print(' Works:')
         for i in range(len(self.works)):
             print(' ', i, ':', self.works[i])
 
-    def addWork(self, someWork):       #Метод, добавляющий элемент в массив работ писателя
+    def addWork(self, someWork):       #РњРµС‚РѕРґ, РґРѕР±Р°РІР»СЏСЋС‰РёР№ СЌР»РµРјРµРЅС‚ РІ РјР°СЃСЃРёРІ СЂР°Р±РѕС‚ РїРёСЃР°С‚РµР»СЏ
         self.works.append(someWork)
 
-    def deleteWork(self, i):        #Метод, удаляющий элемент из массива работ писателя
+    def deleteWork(self, i):        #РњРµС‚РѕРґ, СѓРґР°Р»СЏСЋС‰РёР№ СЌР»РµРјРµРЅС‚ РёР· РјР°СЃСЃРёРІР° СЂР°Р±РѕС‚ РїРёСЃР°С‚РµР»СЏ
         if i < len(self.works):
             del(self.works[i])
         else:
