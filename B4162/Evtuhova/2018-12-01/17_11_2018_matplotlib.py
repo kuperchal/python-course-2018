@@ -40,3 +40,39 @@ axes[1,1].set_title('ctg(x)', fontsize=12)
 axes[1,1].set_xlabel('x', fontsize=8)
 axes[1,1].set_ylabel('y=ctg(x)', fontsize=8)
 plt.show()
+
+a = input('Input separate: ')
+if a == 'separate':
+    #sinus 1
+    plt.plot(xyz, np.sin(xyz), color='green')
+    plt.grid(True, c='lightblue', alpha=0.5)
+    plt.title('sin(x)', fontsize=12)
+    plt.xlabel('x', fontsize=8)
+    plt.ylabel('y=sin(x)', fontsize=8)
+    plt.annotate('local max', xy=(1.57, 1), xytext=(3.5, 0.5), arrowprops=dict(facecolor='black', shrink=0.01))
+    plt.annotate('local min', xy=(-1.57, -1), xytext=(1, -0.5), arrowprops=dict(facecolor='black', shrink=0.01))
+    plt.show()
+    
+    #cosinus 2
+    plt.plot(xyz, np.cos(xyz), color='red')
+    plt.grid(True, c='lightblue', alpha=0.5)
+    plt.title('cos(x)', fontsize=12)
+    plt.xlabel('x', fontsize=8)
+    plt.ylabel('y=cos(x)', fontsize=8)
+    plt.annotate('local max', xy=(0, 1), xytext=(2, 0.5), arrowprops=dict(facecolor='black', shrink=0.01))
+    plt.annotate('local min', xy=(-3.14, -1), xytext=(-1.5, -0.5), arrowprops=dict(facecolor='black', shrink=0.01))
+    plt.show()
+    
+    #tangens 3
+    plt.plot(xyzt, np.tan(xyzt), color='brown')
+    plt.title('tg(x)', fontsize=12)
+    plt.xlabel('x', fontsize=8)
+    plt.ylabel('y=tg(x)', fontsize=8)
+    plt.show()
+    
+    #cotangens 4
+    plt.plot(xyzct, 1/np.tan(xyzct), color='blue')
+    plt.title('ctg(x)', fontsize=12)
+    plt.xlabel('x', fontsize=8)
+    plt.ylabel('y=ctg(x)', fontsize=8)
+    plt.show()    
