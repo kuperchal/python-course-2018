@@ -32,7 +32,7 @@ class euro(rub):
 
 tr1=rub(12000,5000)
 gr1=dol(12000,5000,62)
-a1=euro(12000,5000,78)
+a1=euro(12000,5000,76)
 tr1.info()
 gr1.convert()
 gr1.info()
